@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container row mx-auto text-center">
+    {% for dir in dirs %}
+    <div class="col-md-4 p-4">
+        <div class="card">
+            <img src="{{dir.image.url}}" alt="{{dir.name}}">
+            <div class="card-body">
+                <a href="{% url 'directorDetail' dir.name %}" class="fw-semibold">
+                    <p2>{{dir.name}}</p2>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

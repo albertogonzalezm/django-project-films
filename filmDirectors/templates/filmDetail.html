@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-3">
+    <div class="card card-body">
+        <div class="row">
+            <div class="col-3">
+                <img src="{{film.poster.url}}" alt="{{film.title}}" width=100%>
+            </div>
+            <div class="col-9">
+                <h1>{{ film.title }}</h1>
+                <p class="fs-4">Fecha de estreno: {{ film.releaseDate }}</p>
+                <p>{{ film.synopsis }}</p>
+                <a href="{% url 'directorDetail' film.author %}" class="fw-semibold">{{ film.author }}</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="container" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mt-4">
+        <label class="mb-2 form-label fs-5" for="formFile">Foto</label>
+        <input required class="form-control" type="file" id="formFile" name="upload">
+    </div>
+    <div class="mt-4">
+        <label class="me-2 form-label fs-5" for="formName">Nombre</label>
+        <input required class="form-control" type="text" name="formName" id="formName">
+    </div>
+    <div class="mt-4">
+        <label class="mb-2 form-label fs-5" for="formInfo">Informacion</label>
+        <textarea required class="form-control" name="formInfo" id="formInfo" cols=100 rows="8"></textarea>
+        <div class="form-text">Max. 700 caracteres</div>
+    </div>
+    <button class="btn btn-success mt-4">Guardar Director</button>
+</form>
+{% endblock %}

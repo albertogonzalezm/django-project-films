@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form class="container" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mt-4">
+        <label class="mb-2 form-label fs-5" for="formFile">Cartelera</label>
+        <input required accept="media/filmPosters/*" class="form-control" type="file" id="formFile" name="upload">
+    </div>
+    <div class="mt-4">
+        <label class="me-2 form-label fs-5" for="formTitle">Titulo</label>
+        <input required class="form-control" type="text" name="formTitle" id="formTitle">
+    </div>
+    <div class="mt-4">
+        <label class="mb-2 form-label fs-5" for="formSyn">Sinopsis</label>
+        <textarea required class="form-control" name="formSyn" id="formSyn" cols=100 rows="8"></textarea>
+        <div class="form-text">Max. 500 caracteres</div>
+    </div>
+    <div class="mt-4" style="width: 25%;">
+        <label class="me-2 form-label fs-5" for="formDir">Director</label>
+        <select class="form-control" id="formDir" name="formDir">
+            {% for dir in directors %}
+            <option value="{{ dir.name }}">{{ dir.name }}</option>
+            {% endfor %}
+        </select>
+        <a href="{% url 'add_director' %}" class="btn btn-dark btn-sm mt-2">Agregar
+            Director</a>
+    </div>
+    <div class="mt-4" style="width: 25%;">
+        <label class="me-2 form-label fs-5" for="formDate">Fecha de estreno</label>
+        <input required class="form-control" type="date" name="formDate" id="formDate">
+    </div>
+    <button class="btn btn-success mt-4">Guardar Pelicula</button>
+</form>
+{% endblock %}
