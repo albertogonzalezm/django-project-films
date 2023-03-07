@@ -9,7 +9,8 @@ def home(request):
     if request.method == 'POST':
         return redirect('directorDetail', request.POST['dir'].title().strip())
 
-    films = Film.objects.all()
+    films = Film.objects.order_by('title')
+    print(films)
     return render(request, 'index.html', {
         'films': films
     })
@@ -19,7 +20,7 @@ def directors(request):
     if request.method == 'POST':
         return redirect('directorDetail', request.POST['dir'].title().strip())
 
-    dirs = Author.objects.all()
+    dirs = Author.objects.order_by('name')
     return render(request, 'directors.html', {
         'dirs': dirs
     })
